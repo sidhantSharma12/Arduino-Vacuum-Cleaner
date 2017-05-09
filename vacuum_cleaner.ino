@@ -92,9 +92,6 @@ void loop() {
   //Read Pins
   int readStart = digitalRead(start);
   int readPause = digitalRead(pause);
-
-  //Use throttle pin to increase speed
-  vacuum_start(); 
   
   //Start Button
   if(readStart == HIGH){
@@ -118,7 +115,7 @@ void loop() {
   UV3();
   UV4();
 
-  // keep the vacuum fan on all the time
+  // keep the vacuum fan on all the time. Use throttle pin to increase speed 
   vacuum_start(); 
 
   //Stop Button
@@ -135,8 +132,7 @@ void loop() {
     analogWrite(rightMotorN, 0);
     analogWrite(leftMotorP, 0); 
     analogWrite(leftMotorN, 0);
-  }
-  vacuum_start();     
+  }    
 }
 
 void UV1(){
@@ -149,7 +145,7 @@ void UV1(){
   digitalWrite(trig_1, LOW);
   
   duration_1= pulseIn(echo_1, HIGH);
-  distance_1= duration_1*0.034/2;
+  distance_1= duration_1*0.034/2; //speed of sound is known
 
   //Ultrasonic sensors_1
   if(distance_1 == 7 ){
@@ -181,7 +177,7 @@ void UV2 (){
   digitalWrite(trig_2, LOW);
   
   duration_2= pulseIn(echo_2, HIGH);
-  distance_2= duration_2*0.034/2;
+  distance_2= duration_2*0.034/2; //speed of sound is known
 
   //Ultrasonic sensors_2
   if(distance_2 == 7 ){
@@ -214,7 +210,7 @@ void UV3(){
   digitalWrite(trig_3, LOW);
   
   duration_3= pulseIn(echo_2, HIGH);
-  distance_3= duration_3*0.034/2;
+  distance_3= duration_3*0.034/2; //speed of sound is known
   
   //Ultrasonic sensors_3
   if(distance_3 == 7 ){
@@ -246,7 +242,7 @@ void UV4(){
   digitalWrite(trig_4, LOW);
   
   duration_4= pulseIn(echo_2, HIGH);
-  distance_4= duration_4*0.034/2;
+  distance_4= duration_4*0.034/2; //speed of sound is known
 
   //Ultrasonic sensors_4
   if( distance_4 == 7){
